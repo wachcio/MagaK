@@ -18,7 +18,7 @@ let operation = prompt(
     'Podaj działanie które mam wykonać na liczbach (+,-,*,/)'
 );
 
-if (
+while (
     operation != '+' &&
     operation != '-' &&
     operation != '*' &&

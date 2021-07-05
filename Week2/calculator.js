@@ -1,9 +1,13 @@
 // const calculator = function(numberOne, numberTwo) {
 const calculator = (numberOne, numberTwo) => {
     if (
-        numberOne === undefined ||
+        numberOne === undefined || //bad data
         numberTwo === undefined ||
-        Number.isNaN(Number(numberOne)) === true ||
+        numberOne === '' || //empty string
+        numberTwo === '' ||
+        numberOne === null || //prompt click cancel
+        numberTwo === null ||
+        Number.isNaN(Number(numberOne)) === true || //data is not number
         Number.isNaN(Number(numberTwo)) === true
     )
         return console.log('Wrong input data');

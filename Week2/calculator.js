@@ -1,0 +1,37 @@
+// const calculator = function(numberOne, numberTwo) {
+const calculator = (numberOne, numberTwo) => {
+    if (
+        numberOne === undefined ||
+        numberTwo === undefined ||
+        Number.isNaN(Number(numberOne)) === true ||
+        Number.isNaN(Number(numberTwo)) === true
+    )
+        return console.log('Wrong input data');
+
+    const sum = numberOne + numberTwo;
+    const substract = numberOne - numberTwo;
+    const multiply = numberOne * numberTwo;
+    const divide = numberOne / numberTwo;
+
+    if (numberTwo == 0) {
+        console.log(`Na podstawie podanych przez Ciebie danych obliczyłem:
+        ${numberOne} + ${numberTwo} = ${sum}
+        ${numberOne} - ${numberTwo} = ${substract}
+        ${numberOne} * ${numberTwo} = ${multiply}`);
+    } else {
+        console.log(`Na podstawie podanych przez Ciebie danych obliczyłem:
+        ${numberOne} + ${numberTwo} = ${sum}
+        ${numberOne} - ${numberTwo} = ${substract}
+        ${numberOne} * ${numberTwo} = ${multiply}
+        ${numberOne} / ${numberTwo} = ${divide}`);
+    }
+};
+
+// calculator('1', '0');
+// calculator('1', 'fff');
+// calculator(1, 65);
+
+const numberOne = prompt('Podaj pierwszą liczbę');
+const numberTwo = prompt('Podaj drugą liczbę');
+
+calculator(numberOne, numberTwo);

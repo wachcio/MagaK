@@ -8,10 +8,10 @@ const calculator = (numberOne, numberTwo) => {
     )
         return console.log('Wrong input data');
 
-    const sum = numberOne + numberTwo;
-    const substract = numberOne - numberTwo;
-    const multiply = numberOne * numberTwo;
-    const divide = numberOne / numberTwo;
+    const sum = Number(numberOne) + Number(numberTwo);
+    const substract = Number(numberOne) - Number(numberTwo);
+    const multiply = Number(numberOne) * Number(numberTwo);
+    const divide = Number(numberOne) / Number(numberTwo);
 
     if (numberTwo == 0) {
         console.log(`Na podstawie podanych przez Ciebie danych obliczyłem:

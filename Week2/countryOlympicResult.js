@@ -48,6 +48,8 @@ germany.addResult(-1);
 germany.addResult('ddd');
 germany.addResult('2');
 germany.addResult(0);
+germany.addResult(undefined);
+germany.addResult(null);
 germany.addResult(21);
 germany.addResult(12);
 germany.addResult(33);

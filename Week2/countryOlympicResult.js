@@ -13,10 +13,10 @@ class Country {
     }
 
     addResult(place) {
-        if (typeof place !== 'number' || Number(place) < 0 || !place)
+        if (!Number(place) || Number(place) < 0 || !place)
             return 'Delivered wrong place.';
 
-        return this.places.push(place);
+        return this.places.push(Number(place));
     }
 
     isWinner() {
@@ -43,7 +43,11 @@ console.log(poland);
 
 const germany = new Country('Germany');
 germany.addResult(12);
-germany.addResult(15);
+germany.addResult();
+germany.addResult(-1);
+germany.addResult('ddd');
+germany.addResult('2');
+germany.addResult(0);
 germany.addResult(21);
 germany.addResult(12);
 germany.addResult(33);

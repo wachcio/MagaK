@@ -16,7 +16,7 @@ class Country {
         if (typeof place !== 'number' || Number(place) < 0 || !place)
             return 'Delivered wrong place.';
 
-        this.places.push(place);
+        return this.places.push(place);
     }
 
     isWinner() {

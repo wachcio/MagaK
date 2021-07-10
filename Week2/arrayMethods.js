@@ -27,4 +27,6 @@ const cities = [
     'Rabka-Zdrój',
 ];
 
-cities.map((el) => console.log(el.length % 2 == 0 ? el.toUpperCase() : el));
+cities
+    .filter((el) => el.length % 2 == 0)
+    .map((el) => console.log(el.toUpperCase()));

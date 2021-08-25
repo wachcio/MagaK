@@ -1,0 +1,14 @@
+{
+  "name": "chokidarproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "chokidarWatcher.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chokidar": "^3.5.2"
+  }
+}

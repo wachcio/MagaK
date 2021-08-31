@@ -6,7 +6,7 @@ Program uruchamiamy:
 node exeProgram --prog
 
 Dostępne patrametry do niego to:
-kalkulator - kalkulator Debian
-gimp
-writer - LibreOffice Writer
+kalkulator - kalkulator Debian,
+gimp,
+writer - LibreOffice Writer,
 calc - LibreOffice Calc

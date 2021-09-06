@@ -21,20 +21,22 @@ const fs = require('fs').promises;
         };
     }
 
-    if (!arg.validate(['path']) || !arg.validate(['text']))
-        throw Error('Not provide text or path to file');
+    if (!arg.validate(['path']) || !arg.validate(['pass']))
+        throw Error('Not provide password or path to file');
 
     try {
-        const promise = fs
+        await fs
             .writeFile(
                 arg.get(['path']),
                 JSON.stringify(
-                    await encryptText(arg.get(['text']), process.env.PASSWORD, process.env.SALT),
+                    await encryptText(
+                        await fs.readFile(arg.get(['path']), 'utf-8'),
+                        arg.get(['pass']),
+                        process.env.SALT,
+                    ),
                 ),
             )
             .catch((err) => console.log(err));
-
-        await promise;
     } catch (e) {
         console.error(e);
     }

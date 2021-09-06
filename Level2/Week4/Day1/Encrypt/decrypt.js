@@ -21,13 +21,15 @@ const fs = require('fs').promises;
         throw Error('Not provide password or path to file');
 
     try {
-        console.log(
+        fs.writeFile(
+            arg.get(['path']),
             await decryptText(
                 JSON.parse(await fs.readFile(arg.get(['path']), 'utf-8')).encrypted,
                 arg.get(['pass']),
                 process.env.SALT,
                 JSON.parse(await fs.readFile(arg.get(['path']), 'utf-8')).iv,
             ),
+            'utf-8',
         );
     } catch (e) {
         console.error(e);

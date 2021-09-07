@@ -1,9 +1,5 @@
 require('dotenv').config(); // import variables from .env file. .env file not send to Github
 const arg = require('../../../../helpers/arguments');
-const { promisify } = require('util');
-const scrypt = promisify(require('crypto').scrypt);
-const randomBytes = promisify(require('crypto').randomBytes);
-const { createCipheriv } = require('crypto');
 const fs = require('fs').promises;
 const { encryptText } = require('../../../../helpers/cipher');
 

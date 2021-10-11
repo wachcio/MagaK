@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+        <title>Ankieta</title>
+    </head>
+    <body>
+        <div class="flex items-center justify-center h-screen">
+            <div
+                class="bg-gray-800 flex flex-col w-80 border border-gray-900 rounded-lg px-8 py-10"
+            >
+                <div class="text-white mt-10">
+                    <h1 class="font-bold text-4xl text-center mb-2">Witamy</h1>
+                    <p class="font-semibold">
+                        Zapraszamy do odpowiedzi na pytanie: Czy MegaK to najlepszy kurs JS pod
+                        Słońcem?
+                    </p>
+                </div>
+                <form id="form" class="flex flex-col space-y-8 mt-10 text-white">
+                    <fieldset id="group1" class="flex flex-row items-center justify-evenly">
+                        <div>
+                            <input type="radio" name="vote" value="yes" checked /><label for="yes"
+                                >TAK</label
+                            >
+                        </div>
+                        <div>
+                            <input type="radio" name="vote" value="no" /><label for="no">NIE</label>
+                        </div>
+                    </fieldset>
+                    <button
+                        class="
+                            border border-blue-500
+                            bg-blue-500
+                            text-white
+                            rounded-lg
+                            py-3
+                            font-semibold
+                        "
+                    >
+                        Wyślij
+                    </button>
+                </form>
+
+                <button
+                    class="
+                        border border-blue-500
+                        bg-blue-500
+                        text-white
+                        rounded-lg
+                        py-3
+                        font-semibold
+                        mt-2
+                    "
+                    id="showResult"
+                >
+                    Zobacz wyniki ankiety
+                </button>
+                <p id="message" class="font-bold text-xl text-center mb-2 text-white"></p>
+            </div>
+        </div>
+    </body>
+    <script>
+        const form = document.querySelector('#form');
+        const message = document.querySelector('#message');
+        const showResult = document.querySelector('#showResult');
+
+        const formSumbit = async (e) => {
+            e.preventDefault();
+
+            message.textContent = ' ';
+            await fetch(`http://localhost:3000/votes/${form.elements.vote.value}`)
+                .then((response) => response.json())
+                .then((res) => {
+                    console.log(res.message);
+
+                    message.textContent = res.message;
+                });
+        };
+        const showResultFn = async (e) => {
+            e.preventDefault();
+
+            message.textContent = ' ';
+            await fetch(`http://localhost:3000/votes/check`)
+                .then((response) => response.json())
+                .then((res) => {
+                    console.log(res.message);
+
+                    message.textContent = res.message;
+                });
+        };
+
+        form.addEventListener('submit', formSumbit);
+        showResult.addEventListener('click', showResultFn);
+        // console.log(form);
+    </script>
+</html>

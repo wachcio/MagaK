@@ -33,15 +33,15 @@ app.get('/votes/yes', async (req, res) => {
     answers.yes++;
     await updateAnswersFile();
 
-    res.send('Dziękujemy za głos!');
+    res.json({ message: 'Dziękujemy za głos!' });
 });
 app.get('/votes/no', async (req, res) => {
     answers.no++;
     await updateAnswersFile();
-    res.send('Dziękujemy za głos!');
+    res.json({ message: 'Dziękujemy za głos!' });
 });
 app.get('/votes/check', async (req, res) => {
-    res.send(`Wyniki głosowania 'yes': ${answers.yes}, 'no': ${answers.no}`);
+    res.json({ message: `Wyniki głosowania 'TAK': ${answers.yes}, 'NIE': ${answers.no}` });
 });
 
 app.listen(3000);

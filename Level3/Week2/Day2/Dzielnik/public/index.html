@@ -87,8 +87,6 @@
             )
                 .then((response) => response.json())
                 .then((res) => {
-                    console.log(res.message);
-
                     message.textContent = res.message;
                 });
         };

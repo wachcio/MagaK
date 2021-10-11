@@ -2,7 +2,7 @@ const express = require('express');
 
 const app = express();
 
-app.use(express.static('./public'));
+app.use(express.static('./public/zadanie01'));
 
 app.get('/checkNumber/:numA/:numB', async (req, res) => {
     if (isNaN(Number(req.params.numA)) || isNaN(Number(req.params.numB))) {

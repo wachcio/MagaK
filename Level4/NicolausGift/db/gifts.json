@@ -1,0 +1,22 @@
+[
+    {
+        "id": "1",
+        "name": "kolejka",
+        "availability": 3
+    },
+    {
+        "id": "2",
+        "name": "samochód",
+        "availability": 12
+    },
+    {
+        "id": "3",
+        "name": "laptop",
+        "availability": 3
+    },
+    {
+        "id": "4",
+        "name": "rower",
+        "availability": 10
+    }
+]

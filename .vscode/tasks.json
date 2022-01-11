@@ -1,0 +1,18 @@
+{
+    "$comment": "Ignore the 'auto' declaration eror",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "typescript",
+            "type": "typescript",
+            "tsconfig": "tsconfig.json",
+            "option": "watch",
+            "auto": true,
+            "problemMatcher": [
+                "$tsc-watch"
+            ]
+        }
+    ],
+    "sourceMap": true
+}

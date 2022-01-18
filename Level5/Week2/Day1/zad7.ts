@@ -4,23 +4,24 @@
 
 // Nie zmieniaj w klasie nic oprócz typów!
 class Bookmarks {
+    list: string[];
     constructor() {
         this.list = [];
     }
 
-    first() {
+    first(): string {
         return this.list[0];
     }
 
-    last() {
+    last(): string {
         return this.list[this.list.length - 1];
     }
 
-    add(url) {
+    add(url: string): void {
         this.list.push(url);
     }
 
-    remove(urlOrAll) {
+    remove(urlOrAll: string | boolean): void {
         if (urlOrAll === true) {
             this.list = [];
         } else {
@@ -32,10 +33,11 @@ class Bookmarks {
 // Poniższy kod możesz zmieniać - tak, aby miał typy, sens i nie wywalał błędów :)
 const favorites = new Bookmarks();
 
-function createLink(bookmark) {
-    return `<a href="${bookmark}">${bookmark.substr(bookmark.indexOf('//') + 2)}</a>`;
+function createLink(bookmark: string) {
+    return `<a href="${bookmark}">${bookmark.substring(bookmark.indexOf('//') + 2)}</a>`;
 }
 
+favorites.add('http://google.pl');
 favorites.add('http://wp.pl');
 console.log(createLink(favorites.first()));
 favorites.remove('http://wp.pl');

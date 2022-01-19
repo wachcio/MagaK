@@ -10,7 +10,7 @@ interface Item {
     vat: number;
 }
 
-function showItems(items: Item[]) {
+function showItems(items: Item[]): void {
     // Ew. typy dodaj wyłącznie tutaj
     // Pętla
 

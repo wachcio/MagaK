@@ -7,6 +7,7 @@ import { OrderRouter } from './routes/order';
 import { handlebarsHelpers } from './utils/handlebars-helpers';
 import { COOKIE_BASES, COOKIE_ADDONS } from './data/cookies-data';
 import { Entries } from './types/entries';
+import { MyRouter } from './types/my-router';
 
 export class CookieMakerApp {
     private app: Application = express();
@@ -14,6 +15,7 @@ export class CookieMakerApp {
         COOKIE_BASES,
         COOKIE_ADDONS,
     };
+    private readonly routers = [HomeRouter, ConfiguratorRouter, OrderRouter];
     constructor() {
         this._configureApp();
         this._setRoutes();
@@ -37,14 +39,15 @@ export class CookieMakerApp {
     }
 
     _setRoutes(): void {
-        this.app.use('/', new HomeRouter(this).router);
-        this.app.use('/configurator', new ConfiguratorRouter(this).router);
-        this.app.use('/order', new OrderRouter(this).router);
+        for (const router of this.routers) {
+            const obj: MyRouter = new router(this);
+            this.app.use(obj.urlPrefix, obj.router);
+        }
     }
 
     _run(): void {
-        this.app.listen(3000, '0.0.0.0', () => {
-            console.log('Listening on http://localhost:3000');
+        this.app.listen(3001, '0.0.0.0', () => {
+            console.log('Listening on http://localhost:3001');
         });
     }
 

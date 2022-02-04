@@ -1,13 +1,13 @@
 import { Response, Request, Router } from 'express';
 import { COOKIE_ADDONS_KEYS, COOKIE_BASES, COOKIE_BASES_KEYS } from '../data/cookies-data';
-import { rest } from '../rest.decorator';
+import { get } from '../rest.decorator';
 import { MyRouter } from '../types/my-router';
 import { BaseRouter } from './base';
 
 export class ConfiguratorRouter extends BaseRouter implements MyRouter {
     public readonly urlPrefix = '/configurator';
 
-    @rest('get', '/select-base/:baseName')
+    @get('/select-base/:baseName')
     private selectBase = (req: Request, res: Response) => {
         const { baseName } = req.params as { baseName: COOKIE_BASES_KEYS };
 
@@ -20,7 +20,7 @@ export class ConfiguratorRouter extends BaseRouter implements MyRouter {
         });
     };
 
-    @rest('get', '/add-addon/:addonName')
+    @get('/add-addon/:addonName')
     private addAddon = (req: Request, res: Response) => {
         const { addonName } = req.params as { addonName: COOKIE_ADDONS_KEYS };
 
@@ -44,7 +44,7 @@ export class ConfiguratorRouter extends BaseRouter implements MyRouter {
         });
     };
 
-    @rest('get', '/delete-addon/:addonName')
+    @get('/delete-addon/:addonName')
     private deleteAddon = (req: Request, res: Response) => {
         const { addonName } = req.params;
 

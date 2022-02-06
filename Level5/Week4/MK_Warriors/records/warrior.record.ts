@@ -1,17 +1,17 @@
 import { pool } from '../utils/db';
 import { ValidationError } from '../utils/errors';
 import { v4 as uuid } from 'uuid';
-import { Child } from '../types/child';
+import { Warrior } from '../types/warrior';
 import { FieldPacket } from 'mysql2';
 
-type ChildRecordResult = [ChildRecord[], FieldPacket[]];
+type WarriorRecordResult = [WarriorRecord[], FieldPacket[]];
 
-export class ChildRecord implements Child {
+export class WarriorRecord implements Warrior {
     public id?: string;
     public name: string;
     public giftId: string | null;
 
-    constructor({ id, name, giftId }: ChildRecord) {
+    constructor({ id, name, giftId }: WarriorRecord) {
         if (!name || name.length < 3 || name.length > 25) {
             throw new ValidationError('Imię musi mieć od 3 do 25 znaków.');
         }
@@ -26,7 +26,7 @@ export class ChildRecord implements Child {
             this.id = uuid();
         }
 
-        await pool.execute('INSERT INTO `children`(`id`, `name`) VALUES(:id, :name)', {
+        await pool.execute('INSERT INTO `Warriorren`(`id`, `name`) VALUES(:id, :name)', {
             id: this.id,
             name: this.name,
         });
@@ -34,23 +34,23 @@ export class ChildRecord implements Child {
         return this.id;
     }
 
-    static async listAll(): Promise<ChildRecord[]> {
+    static async listAll(): Promise<WarriorRecord[]> {
         const [results] = (await pool.execute(
-            'SELECT * FROM `children` ORDER BY `name` ASC',
-        )) as ChildRecordResult;
-        return results.map((obj: ChildRecord) => new ChildRecord(obj));
+            'SELECT * FROM `Warriorren` ORDER BY `name` ASC',
+        )) as WarriorRecordResult;
+        return results.map((obj: WarriorRecord) => new WarriorRecord(obj));
     }
 
-    static async getOne(id: string): Promise<ChildRecord | null> {
-        const [results] = (await pool.execute('SELECT * FROM `children` WHERE `id` = :id', {
+    static async getOne(id: string): Promise<WarriorRecord | null> {
+        const [results] = (await pool.execute('SELECT * FROM `Warriorren` WHERE `id` = :id', {
             id,
-        })) as ChildRecordResult;
-        return results.length === 0 ? null : new ChildRecord(results[0]);
+        })) as WarriorRecordResult;
+        return results.length === 0 ? null : new WarriorRecord(results[0]);
     }
 
     async update(): Promise<void> {
         await pool.execute(
-            'UPDATE `children` SET `name` = :name, `giftId` = :giftId WHERE `id` = :id',
+            'UPDATE `Warriorren` SET `name` = :name, `giftId` = :giftId WHERE `id` = :id',
             {
                 id: this.id,
                 name: this.name,

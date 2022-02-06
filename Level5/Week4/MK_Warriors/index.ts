@@ -5,10 +5,11 @@ import { HomeRouter } from './routers/home';
 import { handlebarsHelpers } from './utils/handlebars-helpers';
 // import { Entries } from './types/entries';
 import { MyRouter } from './types/my-router';
+import { Warrior } from './routers/warrior';
 
 export class MK_Warriors {
     private app: Application = express();
-    private readonly routers = [HomeRouter];
+    private readonly routers = [HomeRouter, Warrior];
     constructor() {
         this._configureApp();
         this._setRoutes();

@@ -1,5 +1,5 @@
 import express from 'express';
-require('express-async-errors');
+import 'express-async-errors';
 import methodOverride from 'method-override';
 import { engine } from 'express-handlebars';
 import { handleError } from './utils/errors';
@@ -34,6 +34,6 @@ app.use('/gift', giftRouter);
 
 app.use(handleError);
 
-app.listen(3000, '0.0.0.0', () => {
+app.listen(3002, '0.0.0.0', () => {
     console.log('Listening on http://localhost:3000');
 });

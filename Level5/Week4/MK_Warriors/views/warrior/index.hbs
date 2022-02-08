@@ -1,1 +1,21 @@
-<h2>Wojownik</h2>
+<h2>Dodaj nowego wojownika</h2>
+<form action='/warrior' method='post'>
+    <label for='name'>Nazwa
+        <input name='name' id='name' type='text' />
+    </label>
+    <label for='power'>Siła
+        <input type='number' name='power' id='power' value='3' />
+    </label>
+    <label for='defense'>Obrona
+        <input type='number' name='defense' id='defense' value='3' />
+    </label>
+    <label for='resistance'>Wytrzymałość
+        <input type='number' name='resistance' id='resistance' value='2' />
+    </label>
+    <label for='agility'>Zwinność
+        <input type='number' name='agility' id='agility' value='2' />
+    </label>
+    <button type='submit'>Zapisz wojownika</button>
+</form>
+{{>error}}
+{{>go-home}}

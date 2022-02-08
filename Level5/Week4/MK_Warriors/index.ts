@@ -1,4 +1,12 @@
-import express, { Application, json, Response, Request, static as expressStatic } from 'express';
+import express, {
+    Application,
+    json,
+    Response,
+    Request,
+    static as expressStatic,
+    urlencoded,
+} from 'express';
+import methodOverride from 'method-override';
 // import cookieParser from 'cookie-parser';
 import { engine } from 'express-handlebars';
 import { HomeRouter } from './routers/home';
@@ -20,6 +28,8 @@ export class MK_Warriors {
 
     _configureApp(): void {
         this.app = express();
+        this.app.use(urlencoded({ extended: true }));
+        this.app.use(methodOverride('_method'));
 
         this.app.use(json());
         this.app.use(expressStatic('public'));

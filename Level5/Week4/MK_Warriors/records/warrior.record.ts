@@ -3,6 +3,7 @@ import { ValidationError } from '../utils/errors';
 import { v4 as uuid } from 'uuid';
 // import { Warrior } from '../types/warrior';
 import { FieldPacket } from 'mysql2';
+import { WarriorResponse } from '../types/warrior-response';
 
 type WarriorRecordResult = [WarriorRecord[], FieldPacket[]];
 
@@ -25,10 +26,12 @@ export class WarriorRecord implements WarriorRecord {
         this.agility = obj.agility;
     }
 
-    static async insert(obj: WarriorRecord): Promise<Object> {
+    static async insert(obj: WarriorRecord): Promise<WarriorResponse> {
+        // console.log({ warrior: obj });
+
         try {
             const id = uuid();
-
+            if (!obj.name) throw new ValidationError('Wojownik musi mieć nazwę');
             if (
                 Number(obj.power) +
                     Number(obj.defense) +
@@ -50,7 +53,14 @@ export class WarriorRecord implements WarriorRecord {
                 },
             );
 
-            return { id };
+            return {
+                id,
+                name: obj.name,
+                power: obj.power,
+                defense: obj.defense,
+                resistance: obj.resistance,
+                agility: obj.agility,
+            };
         } catch (err: any) {
             console.log(err);
 

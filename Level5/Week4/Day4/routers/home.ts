@@ -1,6 +1,4 @@
-import { Response, Request } from 'express';
-
-const { Router } = require('express');
+import { Response, Request, Router } from 'express';
 
 export const homeRouter = Router();
 

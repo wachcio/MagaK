@@ -61,29 +61,4 @@ export class WarriorRecord implements WarriorRecord {
             return { error: err };
         }
     }
-
-    // static async listAll(): Promise<WarriorRecord[]> {
-    //     const [results] = (await pool.execute(
-    //         'SELECT * FROM `Warriorren` ORDER BY `name` ASC',
-    //     )) as WarriorRecordResult;
-    //     return results.map((obj: WarriorRecord) => new WarriorRecord(obj));
-    // }
-
-    // static async getOne(id: string): Promise<WarriorRecord | null> {
-    //     const [results] = (await pool.execute('SELECT * FROM `Warriorren` WHERE `id` = :id', {
-    //         id,
-    //     })) as WarriorRecordResult;
-    //     return results.length === 0 ? null : new WarriorRecord(results[0]);
-    // }
-
-    // async update(): Promise<void> {
-    //     await pool.execute(
-    //         'UPDATE `Warriorren` SET `name` = :name, `giftId` = :giftId WHERE `id` = :id',
-    //         {
-    //             id: this.id,
-    //             name: this.name,
-    //             giftId: this.giftId,
-    //         },
-    //     );
-    // }
 }

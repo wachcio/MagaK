@@ -2,8 +2,12 @@ import { pool } from '../utils/db';
 import { ValidationError } from '../utils/errors';
 import { v4 as uuid } from 'uuid';
 // import { Warrior } from '../types/warrior';
-import { FieldPacket } from 'mysql2';
-import { WarriorResponse } from '../types/warrior-response';
+import { FieldPacket, RowDataPacket } from 'mysql2';
+import {
+    WarriorResponse,
+    WarriorResposeError,
+    WarriorsListResponse,
+} from '../types/warrior-response';
 
 type WarriorRecordResult = [WarriorRecord[], FieldPacket[]];
 
@@ -67,7 +71,7 @@ export class WarriorRecord implements WarriorRecord {
             );
 
             return {
-                id,
+                // id,
                 name: obj.name,
                 power: obj.power,
                 defense: obj.defense,
@@ -79,6 +83,29 @@ export class WarriorRecord implements WarriorRecord {
 
             if (err.code === 'ER_DUP_ENTRY')
                 return { error: 'Wojownik o tym imieniu już istnieje' };
+            if (err instanceof ValidationError) return { error: err.message };
+
+            return { error: err };
+        }
+    }
+    static async getAll(): Promise<RowDataPacket[] | WarriorResposeError> {
+        try {
+            const res = (await pool.execute(
+                'SELECT `name`,`power`,`defense`,`resistance`,`agility` FROM `warriors` ORDER BY `warriors`.`name` ASC',
+            )) as RowDataPacket[][];
+            // console.log(res);
+
+            if (res[0].length < 2) {
+                // console.log(`${res[0].length} wojowników w bazie`);
+
+                throw new ValidationError(
+                    `W tym momencie w bazie jest ${res[0].length} wojownik/ów. Dodaj przynajmniej 2 wojowników aby kontunuować.`,
+                );
+            }
+            return res[0];
+        } catch (err: any) {
+            console.log(err);
+
             if (err instanceof ValidationError) return { error: err.message };
 
             return { error: err };

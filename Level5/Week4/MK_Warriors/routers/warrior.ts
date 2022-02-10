@@ -18,7 +18,7 @@ export class WarriorRouter extends BaseRouter implements MyRouter {
         let result = await WarriorRecord.insert(req.body);
         console.log(result);
 
-        if (result.hasOwnProperty('id') === true) {
+        if (result.hasOwnProperty('name') === true) {
             result = result as WarriorResponseOk;
             res.render('warrior/warrior-add-confirmation', { name: result.name });
         } else {

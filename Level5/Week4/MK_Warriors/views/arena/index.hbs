@@ -1,8 +1,23 @@
 <h2>Arena</h2>
-<ul class='warrior_list'>
+{{#if warriors}}
+<form method="post" action="/">
+<select id="warrior1">
     {{#each warriors}}
-        <li>{{this.name}}</li>
+        <option value={{this.name}}>{{this.name}}</option>
     {{/each}}
-</ul>
+</select>
+<select id="warrior2">
+    {{#each warriors}}
+        <option>{{this.name}}</option>
+    {{/each}}
+</select>
+<button type="submit">Walcz!</button>
+</form>
+{{/if}}
+
+{{#unless warriors}}
 {{>error}}
+{{>go-add-warrior}}
+{{/unless}}
+
 {{>go-home}}

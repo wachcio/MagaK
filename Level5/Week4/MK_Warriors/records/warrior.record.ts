@@ -33,6 +33,19 @@ export class WarriorRecord implements WarriorRecord {
             const id = uuid();
             if (!obj.name) throw new ValidationError('Wojownik musi mieć nazwę');
             if (
+                obj.agility < 1 ||
+                obj.defense < 1 ||
+                obj.power < 1 ||
+                obj.resistance < 1 ||
+                obj.agility > 7 ||
+                obj.defense > 7 ||
+                obj.power > 7 ||
+                obj.resistance > 7
+            )
+                throw new ValidationError(
+                    'Wartość siły, obrony, wytrzymałości i zwinności nie mogą być mniejsze od 1 i większe od 7',
+                );
+            if (
                 Number(obj.power) +
                     Number(obj.defense) +
                     Number(obj.resistance) +

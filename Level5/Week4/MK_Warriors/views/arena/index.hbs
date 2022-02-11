@@ -1,14 +1,14 @@
 <h2>Arena</h2>
 {{#if warriors}}
-<form method="post" action="/">
-<select id="warrior1">
+<form method="get" action="/arena/fight">
+<select name="warrior1" id="warrior1">
     {{#each warriors}}
         <option value={{this.name}}>{{this.name}}</option>
     {{/each}}
 </select>
-<select id="warrior2">
+<select name="warrior2" id="warrior2">
     {{#each warriors}}
-        <option>{{this.name}}</option>
+        <option value={{this.name}}>{{this.name}}</option>
     {{/each}}
 </select>
 <button type="submit">Walcz!</button>

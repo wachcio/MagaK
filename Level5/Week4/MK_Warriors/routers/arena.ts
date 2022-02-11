@@ -23,8 +23,25 @@ export class ArenaRouter extends BaseRouter implements MyRouter {
         }
     };
 
-    // @get('/')
-    // private home = async (req: Request, res: Response): Promise<void> => {
-    //     // res.send(await WarriorRecord.insert(req.body));
-    // };
+    @get('/fight')
+    private fight = async (req: Request, res: Response): Promise<void> => {
+        // console.log(req.query);
+        // res.send(req.query);
+        if (!req.query.warrior1 || !req.query.warrior2) {
+            throw new ValidationError('Nie podano wojowników');
+        }
+
+        let result = await WarriorRecord.checkWarriors({
+            warrior1: req.query.warrior1 as string,
+            warrior2: req.query.warrior2 as string,
+        });
+        if (result.hasOwnProperty('error') === true) {
+            result = result as WarriorResposeError;
+            res.render(`arena/index`, { error: result.error });
+        } else {
+            result = result as [RowDataPacket, RowDataPacket];
+
+            res.render('arena/fight', { warrior1: result[0], warrior2: result[0] });
+        }
+    };
 }

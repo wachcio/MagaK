@@ -10,6 +10,10 @@ import {
 } from '../types/warrior-response';
 
 type WarriorRecordResult = [WarriorRecord[], FieldPacket[]];
+export interface WarriorsToCheck {
+    warrior1: string;
+    warrior2: string;
+}
 
 export class WarriorRecord implements WarriorRecord {
     public id?: string;
@@ -103,6 +107,35 @@ export class WarriorRecord implements WarriorRecord {
                 );
             }
             return res[0];
+        } catch (err: any) {
+            console.log(err);
+
+            if (err instanceof ValidationError) return { error: err.message };
+
+            return { error: err };
+        }
+    }
+
+    static async checkWarriors(
+        obj: WarriorsToCheck,
+    ): Promise<[RowDataPacket, RowDataPacket] | WarriorResposeError> {
+        try {
+            if (obj.warrior1 == obj.warrior2) {
+                throw new ValidationError(`Wojownik nie może walczyć sam ze sobą.`);
+            }
+            const res1 = (await pool.execute(
+                'SELECT * FROM `warriors` WHERE `name` LIKE :warrior1',
+                {
+                    warrior1: obj.warrior1,
+                },
+            )) as RowDataPacket[];
+            const res2 = (await pool.execute(
+                'SELECT * FROM `warriors` WHERE `name` LIKE :warrior2',
+                {
+                    warrior2: obj.warrior2,
+                },
+            )) as RowDataPacket[];
+            return [res1[0], res2[0]];
         } catch (err: any) {
             console.log(err);
 

@@ -1,0 +1,20 @@
+<h2>Arena - walka</h2>
+{{#if warrior1}}
+
+    {{#each warrior1}}
+        {{this.name}}
+    {{/each}}
+{{/if}} walczy z
+{{#if warrior2}}
+
+    {{#each warrior2}}
+        {{this.name}}
+    {{/each}}
+{{/if}}
+
+{{#unless warrior1}}
+{{>error}}
+{{>go-add-warrior}}
+{{/unless}}
+
+{{>go-home}}

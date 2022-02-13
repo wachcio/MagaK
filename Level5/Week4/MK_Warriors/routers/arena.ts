@@ -5,6 +5,7 @@ import { WarriorRecord } from '../records/warrior.record';
 import { MyRouter } from '../types/my-router';
 import { WarriorResponseOk, WarriorResposeError } from '../types/warrior-response';
 import { ValidationError } from '../utils/errors';
+import { fightLog } from '../utils/fight_log';
 import { BaseRouter } from './base';
 
 export class ArenaRouter extends BaseRouter implements MyRouter {
@@ -40,8 +41,9 @@ export class ArenaRouter extends BaseRouter implements MyRouter {
             res.render(`arena/index`, { error: result.error });
         } else {
             result = result as [RowDataPacket, RowDataPacket];
+            const log = fightLog(result[0][0], result[1][0]);
 
-            res.render('arena/fight', { warrior1: result[0], warrior2: result[0] });
+            res.render('arena/fight', { warrior1: result[0], warrior2: result[1], log });
         }
     };
 }

@@ -12,6 +12,15 @@
     {{/each}}
 {{/if}}
 
+
+{{#if log}}
+<div class="fight_log"
+    {{#each log}}
+        <p class="fight_log_message">{{this.id}} {{this.message}}</p>
+    {{/each}}
+    </div>
+{{/if}}
+
 {{#unless warrior1}}
 {{>error}}
 {{>go-add-warrior}}

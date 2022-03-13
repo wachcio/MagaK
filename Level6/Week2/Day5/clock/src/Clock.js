@@ -5,7 +5,6 @@ export class Clock extends Component {
         time: new Date().toLocaleTimeString(),
         date: new Date().toLocaleDateString(),
     };
-
     componentDidMount() {
         setInterval(() => {
             this.setState({
@@ -18,7 +17,7 @@ export class Clock extends Component {
     render() {
         return (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <h2>{this.state.time}</h2>
+                {/* <h2>{this.state.time}</h2> */}
                 <h2>{this.state.date}</h2>
             </div>
         );

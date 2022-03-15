@@ -6,12 +6,15 @@ export class Clock extends Component {
         date: new Date().toLocaleDateString(),
     };
     componentDidMount() {
-        setInterval(() => {
+        this.intervalID = setInterval(() => {
             this.setState({
                 time: new Date().toLocaleTimeString(),
                 date: new Date().toLocaleDateString(),
             });
         }, 1000);
+    }
+    componentWillUnmount() {
+        clearInterval(this.intervalID);
     }
 
     render() {

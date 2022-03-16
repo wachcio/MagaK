@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+        'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.prograssBar__wraper {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5em;
+}
+.prograssBar__bar {
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.667);
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.prograssBar__description {
+    margin: 0 auto;
+}

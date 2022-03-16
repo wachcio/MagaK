@@ -6,7 +6,7 @@ export function Progressbar(props) {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
-        if (props.progress < 0) {
+        if (props.animated) {
             const intervalID = setInterval(() => {
                 setProgress((progress) => progress + 1);
             }, 100);
@@ -23,13 +23,13 @@ export function Progressbar(props) {
     return (
         <>
             <div className="prograssBar__wraper">
-                {props.progress > 0 ? (
-                    <div className="prograssBar__bar" style={{ width: `${props.progress}%` }}>
-                        <div className="prograssBar__description">{`${props.progress}%`}</div>
-                    </div>
-                ) : (
+                {props.animated ? (
                     <div className="prograssBar__bar" style={{ width: `${progress}%` }}>
                         <div className="prograssBar__description">{`${progress}%`}</div>
+                    </div>
+                ) : (
+                    <div className="prograssBar__bar" style={{ width: `${props.progress}%` }}>
+                        <div className="prograssBar__description">{`${props.progress}%`}</div>
                     </div>
                 )}
             </div>

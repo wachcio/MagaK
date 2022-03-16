@@ -8,7 +8,7 @@ ReactDOM.render(
         <Progressbar progress={0} />
         <Progressbar progress={50} />
         <Progressbar progress={100} />
-        <Progressbar progress={-1} />
+        <Progressbar animated />
     </React.StrictMode>,
     document.getElementById('root'),
 );

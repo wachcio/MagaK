@@ -12,10 +12,10 @@ export function UsersList() {
     );
 
     return (
-        <>
+        <div className="UsersList">
             {usersList.map((e, i) => (
                 <User user={e} key={`${e.phone_number}${e.birthdate}`} />
             ))}
-        </>
+        </div>
     );
 }

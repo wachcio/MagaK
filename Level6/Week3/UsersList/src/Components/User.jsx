@@ -11,10 +11,17 @@ export function User(props) {
 
     return (
         <>
-            <p>
+            <div className="User">
                 <Avatar avatar={avatar} username={props.user.username} />
-                {props.user.username}: {props.user.first_name} {props.user.last_name}
-            </p>
+                <div className="User__description">
+                    <div className="User__username">{props.user.username}</div>
+                    <div className="User__name">
+                        <p>
+                            {props.user.first_name} {props.user.last_name}
+                        </p>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }

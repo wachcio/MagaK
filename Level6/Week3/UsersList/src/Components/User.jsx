@@ -16,9 +16,7 @@ export function User(props) {
                 <div className="User__description">
                     <div className="User__username">{props.user.username}</div>
                     <div className="User__name">
-                        <p>
-                            {props.user.first_name} {props.user.last_name}
-                        </p>
+                        {props.user.first_name} {props.user.last_name}
                     </div>
                 </div>
             </div>

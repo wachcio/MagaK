@@ -7,3 +7,7 @@ export const useStateWithLabel = (name, initialValue) => {
 };
 
 //const [data, setData] = useStateWithLabel('data', []);
+
+export const sortByName = (a, b) => {
+    return a.username.localeCompare(b.username);
+};

@@ -13,7 +13,7 @@ export function UsersList() {
 
     return (
         <>
-            {usersList[0].map((e, i) => (
+            {usersList.map((e, i) => (
                 <User user={e} key={`${e.phone_number}${e.birthdate}`} />
             ))}
         </>

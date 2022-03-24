@@ -12,6 +12,13 @@ function App() {
         e.preventDefault(0);
     };
 
+    const change = (e) => {
+        setPerson((person) => ({
+            ...person,
+            [e.target.name]: e.target.value,
+        }));
+    };
+
     return (
         <>
             <form
@@ -24,41 +31,19 @@ function App() {
                     <input
                         type="text"
                         value={person.firstName}
-                        onChange={(e) =>
-                            setPerson((person) => ({
-                                ...person,
-                                firstName: e.target.value,
-                            }))
-                        }
+                        name="firstName"
+                        onChange={change}
                     />
                 </label>
                 <label>
                     Nazwisko:
                     <br />
-                    <input
-                        type="text"
-                        value={person.lastName}
-                        onChange={(e) =>
-                            setPerson((person) => ({
-                                ...person,
-                                lastName: e.target.value,
-                            }))
-                        }
-                    />
+                    <input type="text" value={person.lastName} name="lastName" onChange={change} />
                 </label>
                 <label>
                     Wiek:
                     <br />
-                    <input
-                        type="number"
-                        value={person.age}
-                        onChange={(e) =>
-                            setPerson((person) => ({
-                                ...person,
-                                age: Number(e.target.value),
-                            }))
-                        }
-                    />
+                    <input type="number" value={person.age} name="age" onChange={change} />
                 </label>
                 <button type="submit">Wyślij</button>
             </form>

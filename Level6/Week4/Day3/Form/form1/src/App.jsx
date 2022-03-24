@@ -3,7 +3,8 @@ import './App.css';
 
 function App() {
     const [firstName, setFirstName] = useState('');
-    const [gender, setGender] = useState('M');
+    const [gender, setGender] = useState(false);
+    const [agreement, setAgreement] = useState(false);
 
     const color = firstName[0] === '@' ? 'green' : 'red';
 
@@ -25,11 +26,25 @@ function App() {
                     onChange={(e) => setFirstName(e.target.value)}
                     style={{ backgroundColor: color }}
                 />
-                <select name="gender" value={gender} onChange={(e) => setGender(e.target.value)}>
+                <select
+                    name="gender"
+                    checked={gender}
+                    onChange={(e) => setGender(e.target.checked)}
+                >
                     <option value="">--wybierz--</option>
                     <option value="W">Woman</option>
                     <option value="M">Man</option>
                 </select>
+                <label>
+                    <input
+                        type="checkbox"
+                        name="agreement"
+                        checked={agreement}
+                        onChange={(e) => setAgreement(e.target.checked)}
+                    />
+                    Agreement
+                </label>
+                <p>{agreement ? 'Zgoda' : 'Brak zgody'}</p>
             </form>
         </>
     );

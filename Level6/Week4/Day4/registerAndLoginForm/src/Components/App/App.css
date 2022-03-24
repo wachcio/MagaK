@@ -1,0 +1,13 @@
+.menu {
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.menu__link {
+    padding: 5px;
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
+}

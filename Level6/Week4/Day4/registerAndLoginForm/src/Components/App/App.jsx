@@ -9,20 +9,28 @@ export function App() {
 
     return (
         <>
-            <button
-                onClick={() => {
-                    setShowRegistration(false);
-                }}
-            >
-                Logowanie
-            </button>
-            <button
-                onClick={() => {
-                    setShowRegistration(true);
-                }}
-            >
-                Rejestracja
-            </button>
+            <div className="menu">
+                <a
+                    href="#"
+                    className="menu__link"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        return setShowRegistration(false);
+                    }}
+                >
+                    Logowanie
+                </a>
+                <a
+                    href="#"
+                    className="menu__link"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        return setShowRegistration(true);
+                    }}
+                >
+                    Rejestracja
+                </a>
+            </div>
             {showRegistration ? <Register /> : <Login />}
         </>
     );

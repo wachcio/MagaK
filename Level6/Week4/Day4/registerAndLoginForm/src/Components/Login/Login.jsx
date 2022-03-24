@@ -1,9 +1,10 @@
 import React from 'react';
-import './Register.css';
+import './Login.css';
 
-export function Register() {
+export function Login() {
     return (
         <>
+            <h1>Logowanie</h1>
             <div></div>
         </>
     );

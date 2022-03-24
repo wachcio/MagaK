@@ -1,9 +1,10 @@
 import React from 'react';
-import './App.css';
+import './Register.css';
 
-export function App() {
+export function Register() {
     return (
         <>
+            <h1>Rejsetracja</h1>
             <div></div>
         </>
     );

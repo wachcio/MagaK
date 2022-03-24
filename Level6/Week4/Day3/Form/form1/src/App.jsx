@@ -43,16 +43,23 @@ function App() {
                 </label>
                 <p>{agreement ? 'Zgoda' : 'Brak zgody'}</p>
                 <div>
-                    <select
-                        name="divColor"
-                        value={divColor}
-                        onChange={(e) => setDivColor(e.target.value)}
-                    >
-                        <option value="">--wybier kolor--</option>
-                        <option value="red">Czerwony</option>
-                        <option value="blue">Niebieski</option>
-                        <option value="green">Zielony</option>
-                    </select>
+                    <div style={{ display: 'flex' }}>
+                        <select
+                            name="divColor"
+                            value={divColor}
+                            onChange={(e) => setDivColor(e.target.value)}
+                        >
+                            <option value="">--wybier kolor--</option>
+                            <option value="red">Czerwony</option>
+                            <option value="blue">Niebieski</option>
+                            <option value="green">Zielony</option>
+                        </select>
+                        <input
+                            type="text"
+                            value={divColor}
+                            onChange={(e) => setDivColor(e.target.value)}
+                        />
+                    </div>
                     <div
                         style={{ backgroundColor: `${divColor}`, width: '100px', height: '100px' }}
                     ></div>

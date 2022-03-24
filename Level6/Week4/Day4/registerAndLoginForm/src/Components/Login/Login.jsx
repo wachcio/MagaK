@@ -22,7 +22,8 @@ export function Login() {
     };
 
     const change = (e) => {
-        setLoginFormData((loginFormData) => ({
+        setIsLogged(null);
+        return setLoginFormData((loginFormData) => ({
             ...loginFormData,
             [e.target.name]: e.target.value,
         }));
@@ -43,7 +44,7 @@ export function Login() {
                     />
                 </label>
                 <label>
-                    <p className="loginForm__label">Password</p>
+                    <p className="loginForm__label">Hasło</p>
                     <input
                         type="password"
                         value={loginFormData.password}

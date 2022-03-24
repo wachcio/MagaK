@@ -52,7 +52,11 @@ export function Login() {
                         className="loginForm__input"
                     />
                 </label>
-                <div>{isLogged === false ? <span>Złe dane logowania</span> : null}</div>
+                <div>
+                    {isLogged === false ? (
+                        <span className="loginForm__bad_login">Złe dane logowania</span>
+                    ) : null}
+                </div>
                 <button type="submit" onClick={logIn}>
                     Zaloguj
                 </button>

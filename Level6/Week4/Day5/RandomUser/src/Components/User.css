@@ -1,0 +1,23 @@
+.User {
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: darkkhaki;
+}
+.User__description {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 15px;
+}
+.User__title {
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.User__name {
+    font-size: small;
+}

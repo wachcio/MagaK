@@ -1,0 +1,13 @@
+.UsersList {
+    display: grid;
+    grid-template-columns: 400px 400px;
+    grid-template-rows: auto;
+    column-gap: 10px;
+    row-gap: 15px;
+    margin: 10px;
+
+    /* display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%; */
+}

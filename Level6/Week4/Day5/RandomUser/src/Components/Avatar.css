@@ -1,0 +1,9 @@
+.Avatar {
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    border: 2px solid gray;
+    border-radius: 50%;
+    margin: 4px;
+}
